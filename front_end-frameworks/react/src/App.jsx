@@ -3,10 +3,10 @@ import Hero from "./sections/Hero";
 
 function App() {
   return (
-    <>
-     <Header />
-     <Hero />
-    </>
+    <div className="bg-slate-950 min-h-screen"> {/* min-h-screen = Fond global de la page */}
+        <Header />
+        <Hero />
+    </div>
   );
 }
 
