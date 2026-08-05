@@ -9,7 +9,7 @@ function Header() {
           <div className="rounded-lg bg-violet-500 p-2 text-slate-50 shadow-lg shadow-violet-500/40">
             <BrainCircuit />
           </div>
-          <span className="text-slate-50 font-bold">Agentic AI</span>
+          <span className="font-bold text-slate-50">Agentic AI</span>
         </a>
 
         {/* Navbar */}
