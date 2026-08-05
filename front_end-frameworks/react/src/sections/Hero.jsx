@@ -33,7 +33,7 @@ function Hero() {
       </p>
 
       {/* CTA */}
-      <div className="flex flex-col gap-4 md:flex-row py-10">
+      <div className="flex flex-col gap-4 py-10 md:flex-row">
         <a
           className="inline-flex items-center gap-2 rounded-md bg-violet-500 px-4 py-2 font-semibold text-slate-50 shadow-lg shadow-violet-500/40 hover:bg-violet-600"
           href="#"
@@ -56,7 +56,9 @@ function Hero() {
               key={stat.label}
               className="rounded-xl border border-slate-800 bg-slate-950 p-6 shadow-xl shadow-slate-950/40"
             >
-              <p className="text-4xl font-black text-violet-300">{stat.value}</p>
+              <p className="text-4xl font-black text-violet-300">
+                {stat.value}
+              </p>
               <p className="text-slate-500">{stat.label}</p>
             </div>
           );
