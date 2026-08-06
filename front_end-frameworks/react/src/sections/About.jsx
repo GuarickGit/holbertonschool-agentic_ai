@@ -18,7 +18,7 @@ function About() {
           </h2>
 
           {/* Introduction */}
-          <p className="mt-4 max-w-2xl pb-10 text-sm text-slate-300 md:text-base">
+          <p className="mt-4 max-w-2xl pb-18 text-sm text-slate-300 md:text-base">
             Agentic AI refers to artificial intelligence systems designed to
             pursue goals, make decisions, use tools, and adapt their actions
             across multiple steps. Instead of only responding to a single
@@ -58,7 +58,9 @@ function About() {
                   </div>
                   <div>
                     <p className="font-semibold text-slate-50">{step.title}</p>
-                    <p className="text-slate-300 text-smm">{step.description}</p>
+                    <p className="text-smm text-slate-300">
+                      {step.description}
+                    </p>
                   </div>
                 </div>
               );
