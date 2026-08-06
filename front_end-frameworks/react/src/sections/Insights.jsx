@@ -26,7 +26,7 @@ function Insights() {
       <div className="flex flex-col items-center gap-8 text-center">
         {/* Eyebrow*/}
         <p className="rounded-full border border-violet-500/20 bg-violet-500/10 px-4 py-2 text-xs text-violet-300">
-          ♦ Insights ♦
+          ✦ Insights ✦
         </p>
 
         {/* Title */}

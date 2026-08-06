@@ -7,7 +7,7 @@ function About() {
         <div className="flex flex-col items-center gap-4">
           {/* Eyebrow */}
           <p className="rounded-full border border-violet-500/20 bg-violet-500/10 px-4 py-2 text-xs text-violet-300">
-            ♦ What is Agentic AI? ♦
+            ✦ What is Agentic AI? ✦
           </p>
 
           {/* Title */}

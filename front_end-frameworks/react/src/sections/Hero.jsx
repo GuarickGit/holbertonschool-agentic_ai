@@ -16,7 +16,7 @@ function Hero() {
     >
       {/* Eyebrow */}
       <p className="rounded-full border border-violet-500/20 bg-violet-500/10 px-4 py-2 text-xs text-violet-300">
-        ♦ The future of coding ♦
+        ✦ The future of coding ✦
       </p>
 
       {/* Title */}
