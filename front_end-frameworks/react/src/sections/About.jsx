@@ -53,12 +53,12 @@ function About() {
             {steps.map((step) => {
               return (
                 <div key={step.number} className="flex gap-4">
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-violet-500 font-bold text-slate-50">
+                  <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-violet-500 font-bold text-slate-50">
                     {step.number}
                   </div>
                   <div>
                     <p className="font-semibold text-slate-50">{step.title}</p>
-                    <p className="text-slate-300">{step.description}</p>
+                    <p className="text-slate-300 text-smm">{step.description}</p>
                   </div>
                 </div>
               );
