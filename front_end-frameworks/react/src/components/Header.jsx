@@ -3,7 +3,7 @@ import { BrainCircuit } from "lucide-react";
 function Header() {
   return (
     <header className="fixed top-0 right-0 left-0 z-50 bg-slate-950">
-      <div className="flex items-center justify-between px-4 py-4 md:px-8 lg:px-20">
+      <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
         {/* Logo + Titre */}
         <a className="flex items-center gap-2" href="#">
           <div className="rounded-lg bg-violet-500 p-2 text-slate-50 shadow-lg shadow-violet-500/40">
