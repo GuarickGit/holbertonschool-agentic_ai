@@ -1,5 +1,6 @@
 import Header from "./components/Header";
 import About from "./sections/About";
+import Contact from "./sections/Contact";
 import Features from "./sections/Features";
 import Hero from "./sections/Hero";
 import Insights from "./sections/Insights";
@@ -12,6 +13,7 @@ function App() {
       <About />
       <Features />
       <Insights />
+      <Contact />
     </div>
   );
 }
