@@ -9,12 +9,12 @@ function Header() {
           <div className="rounded-lg bg-violet-500 p-2 text-slate-50 shadow-lg shadow-violet-500/40">
             <BrainCircuit />
           </div>
-          <span className="font-bold text-slate-50">Agentic AI</span>
+          <span className="text-sm font-bold text-slate-50">Agentic AI</span>
         </a>
 
         {/* Navbar */}
         <div className="flex items-center gap-6">
-          <nav className="hidden gap-6 text-slate-500 md:flex">
+          <nav className="hidden gap-6 text-sm text-slate-500 md:flex">
             <a href="#about-section">About</a>
             <a href="#features-section">Features</a>
             <a href="#insights-section">Insights</a>
@@ -23,7 +23,7 @@ function Header() {
 
           {/* CTA */}
           <a
-            className="rounded-md bg-violet-500 px-4 py-2 font-semibold text-slate-50 shadow-lg shadow-violet-500/40 hover:bg-violet-600"
+            className="rounded-md bg-violet-500 px-4 py-2 text-sm font-semibold text-slate-50 shadow-lg shadow-violet-500/40 hover:bg-violet-600"
             href="#"
           >
             Enroll now
