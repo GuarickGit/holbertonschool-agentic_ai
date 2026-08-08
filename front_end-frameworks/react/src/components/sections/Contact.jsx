@@ -101,137 +101,152 @@ function Contact() {
   return (
     <section
       id="contact-section"
-      className="mx-auto flex max-w-6xl flex-col items-center gap-8 px-6 py-24"
+      className="relative isolate overflow-hidden border-b border-slate-800 py-24"
     >
-      {/* Eyebrow */}
-      <SectionBadge>✦ Start your AI journey ✦</SectionBadge>
+      {/* Glow radial violet + bleu, en fond de section */}
+      <div
+        className="pointer-events-none absolute inset-0 -z-10"
+        style={{
+          background:
+            "radial-gradient(ellipse 70% 60% at 15% 10%, rgba(139, 92, 246, 0.35), transparent), radial-gradient(ellipse 70% 60% at 85% 90%, rgba(59, 130, 246, 0.25), transparent)",
+        }}
+      />
 
-      {/* Title */}
-      <SectionTitle line1="Ready to Explore" line2="Agentic AI?" />
+      {/* Grid Overlay */}
+      <div className="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(to_right,rgba(148,163,184,0.12)_1px,transparent_1px),linear-gradient(to_bottom,rgba(148,163,184,0.12)_1px,transparent_1px)] bg-size-[72px_72px] opacity-30" />
 
-      {/* CTA */}
-      <div className="flex flex-col items-center gap-4 py-10 md:flex-row">
-        <Button
-          href="https://www.holbertonschool.fr/rejoindre-lhippocamp"
-          external
+      {/* Fondu vers le noir en bas de section */}
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 -z-10 h-32 bg-linear-to-b from-transparent to-black" />
+
+      {/* Contenu contraint en largeur */}
+      <div className="mx-auto flex max-w-6xl flex-col items-center gap-8 px-6">
+        {/* Eyebrow */}
+        <SectionBadge>✦ Start your AI journey ✦</SectionBadge>
+
+        {/* Title */}
+        <SectionTitle line1="Ready to Explore" line2="Agentic AI?" />
+
+        {/* CTA */}
+        <div className="flex flex-col items-center gap-4 py-10 md:flex-row">
+          <Button
+            href="https://www.holbertonschool.fr/rejoindre-lhippocamp"
+            external
+          >
+            Enroll at Holberton School <ArrowRight />
+          </Button>
+
+          <Button
+            variant="secondary"
+            href="https://www.holbertonschool.fr/admission"
+            external
+          >
+            Need more information?
+          </Button>
+        </div>
+
+        {/* Highlights */}
+        <div className="flex flex-wrap justify-center gap-6">
+          <div className="flex items-center gap-2 text-sm text-slate-500">
+            <FolderKanban size={16} className="text-violet-500" />
+            <span>Project-based learning</span>
+          </div>
+
+          <div className="flex items-center gap-2 text-sm text-slate-500">
+            <Users size={16} className="text-violet-500" />
+            <span>Peer learning environment</span>
+          </div>
+
+          <div className="flex items-center gap-2 text-sm text-slate-500">
+            <Sparkles size={16} className="text-violet-500" />
+            <span>AI-powered workflows</span>
+          </div>
+        </div>
+
+        {/* Form */}
+        <form
+          onSubmit={handleSubmit}
+          className="w-full max-w-2xl space-y-6 rounded-3xl border border-slate-800 bg-slate-950 p-8 shadow-xl shadow-slate-950/40"
         >
-          Enroll at Holberton School <ArrowRight />
-        </Button>
+          <div>
+            <label
+              htmlFor="fullName"
+              className="mb-2 flex items-center gap-2 font-semibold text-slate-50"
+            >
+              <User size={16} className="text-violet-500" />
+              <span>Full Name</span>
+            </label>
 
-        <Button
-          variant="secondary"
-          href="https://www.holbertonschool.fr/admission"
-          external
-        >
-          Need more information?
-        </Button>
+            <input
+              id="fullName"
+              type="text"
+              placeholder="Your full name..."
+              value={formData.fullName}
+              autoComplete="off"
+              onChange={(e) =>
+                setFormData({ ...formData, fullName: e.target.value })
+              }
+              onBlur={() => setTouched({ ...touched, fullName: true })}
+              className={`w-full rounded-md border ${nameBorderClass} bg-black px-4 py-2 text-slate-50 placeholder:text-slate-500 focus:outline-none`}
+            />
+          </div>
+
+          <div>
+            <label
+              htmlFor="email"
+              className="mb-2 flex items-center gap-2 font-semibold text-slate-50"
+            >
+              <AtSign size={16} className="text-violet-500" />
+              <span>Email</span>
+            </label>
+
+            <input
+              id="email"
+              type="email"
+              placeholder="you@example.com"
+              value={formData.email}
+              autoComplete="off"
+              onChange={(e) =>
+                setFormData({ ...formData, email: e.target.value })
+              }
+              onBlur={() => setTouched({ ...touched, email: true })}
+              className={`w-full rounded-md border ${emailBorderClass} bg-black px-4 py-2 text-slate-50 placeholder:text-slate-500 focus:outline-none`}
+            />
+          </div>
+
+          <div>
+            <label
+              htmlFor="message"
+              className="mb-2 flex items-center gap-2 font-semibold text-slate-50"
+            >
+              <Mail size={16} className="text-violet-500" />
+              <span>Message</span>
+            </label>
+
+            <textarea
+              id="message"
+              placeholder="Tell us about your project or learning goals!"
+              value={formData.message}
+              autoComplete="off"
+              onChange={(e) =>
+                setFormData({ ...formData, message: e.target.value })
+              }
+              onBlur={() => setTouched({ ...touched, message: true })}
+              className={`min-h-32 w-full rounded-md border ${messageBorderClass} bg-black px-4 py-2 text-slate-50 placeholder:text-slate-500 focus:outline-none`}
+            />
+          </div>
+
+          <button
+            type="submit"
+            disabled={!isFormValid || isSending}
+            className="w-full rounded-md bg-violet-500 px-4 py-2 font-semibold text-slate-50 shadow-lg shadow-violet-500/40 hover:bg-violet-600 disabled:cursor-not-allowed disabled:opacity-50"
+          >
+            {isSending ? "Sending..." : "Send message"}
+          </button>
+          <p className="text-center text-sm text-slate-500">
+            {feedbackMessage}
+          </p>
+        </form>
       </div>
-
-      {/* Highlights */}
-      <div className="flex flex-wrap justify-center gap-6">
-        <div className="flex items-center gap-2 text-sm text-slate-500">
-          <FolderKanban size={16} className="text-violet-500" />
-          <span>Project-based learning</span>
-        </div>
-
-        <div className="flex items-center gap-2 text-sm text-slate-500">
-          <Users size={16} className="text-violet-500" />
-          <span>Peer learning environment</span>
-        </div>
-
-        <div className="flex items-center gap-2 text-sm text-slate-500">
-          <Sparkles size={16} className="text-violet-500" />
-          <span>AI-powered workflows</span>
-        </div>
-      </div>
-
-      {/* Form */}
-      <form
-        onSubmit={handleSubmit}
-        className="w-full max-w-2xl space-y-6 rounded-3xl border border-slate-800 bg-slate-950 p-8 shadow-xl shadow-slate-950/40"
-      >
-        <div>
-          <label
-            htmlFor="fullName"
-            className="mb-2 flex items-center gap-2 font-semibold text-slate-50"
-          >
-            <User size={16} className="text-violet-500" />
-            <span>Full Name</span>
-          </label>
-
-          <input
-            id="fullName"
-            type="text"
-            placeholder="Your full name..."
-            value={formData.fullName}
-            autoComplete="off"
-            onChange={(e) =>
-              setFormData({ ...formData, fullName: e.target.value })
-            }
-            // e = l'event déclenché à chaque frappe clavier
-            // e.target = l'input | e.target.value = ce que le user vient de taper
-            // ...formData = garde email et message inchangés, fullName: reçoit la nouvelle valeur
-            // ... = spread operator
-            onBlur={() => setTouched({ ...touched, fullName: true })}
-            // onBlur = inverse de onFocus
-            className={`w-full rounded-md border ${nameBorderClass} bg-black px-4 py-2 text-slate-50 placeholder:text-slate-500 focus:outline-none`}
-          />
-        </div>
-
-        <div>
-          <label
-            htmlFor="email"
-            className="mb-2 flex items-center gap-2 font-semibold text-slate-50"
-          >
-            <AtSign size={16} className="text-violet-500" />
-            <span>Email</span>
-          </label>
-
-          <input
-            id="email"
-            type="email"
-            placeholder="you@example.com"
-            value={formData.email}
-            autoComplete="off"
-            onChange={(e) =>
-              setFormData({ ...formData, email: e.target.value })
-            }
-            onBlur={() => setTouched({ ...touched, email: true })}
-            className={`w-full rounded-md border ${emailBorderClass} bg-black px-4 py-2 text-slate-50 placeholder:text-slate-500 focus:outline-none`}
-          />
-        </div>
-
-        <div>
-          <label
-            htmlFor="message"
-            className="mb-2 flex items-center gap-2 font-semibold text-slate-50"
-          >
-            <Mail size={16} className="text-violet-500" />
-            <span>Message</span>
-          </label>
-
-          <textarea
-            id="message"
-            placeholder="Tell us about your project or learning goals!"
-            value={formData.message}
-            autoComplete="off"
-            onChange={(e) =>
-              setFormData({ ...formData, message: e.target.value })
-            }
-            onBlur={() => setTouched({ ...touched, message: true })}
-            className={`min-h-32 w-full rounded-md border ${messageBorderClass} bg-black px-4 py-2 text-slate-50 placeholder:text-slate-500 focus:outline-none`}
-          />
-        </div>
-
-        <button
-          type="submit"
-          disabled={!isFormValid || isSending}
-          className="w-full rounded-md bg-violet-500 px-4 py-2 font-semibold text-slate-50 shadow-lg shadow-violet-500/40 hover:bg-violet-600 disabled:cursor-not-allowed disabled:opacity-50"
-        >
-          {isSending ? "Sending..." : "Send message"}
-        </button>
-        <p className="text-center text-sm text-slate-500">{feedbackMessage}</p>
-      </form>
     </section>
   );
 }
