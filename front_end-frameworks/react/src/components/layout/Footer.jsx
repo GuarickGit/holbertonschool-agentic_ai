@@ -1,4 +1,4 @@
-import { BrainCircuit } from "lucide-react";
+import Brand from "../ui/Brand";
 import { Instagram, Tiktok, TwitterX, Youtube } from "react-bootstrap-icons";
 
 function Footer() {
@@ -7,12 +7,7 @@ function Footer() {
       <div className="mx-auto flex max-w-6xl flex-col gap-16 px-6 pt-20 pb-12 md:flex-row md:justify-between">
         <div>
           {/* Brand */}
-          <div className="flex items-center gap-2">
-            <div className="rounded-lg bg-violet-500 p-2 text-slate-50 shadow-lg shadow-violet-500/40">
-              <BrainCircuit />
-            </div>
-            <span className="font-bold text-slate-50">Agentic AI</span>
-          </div>
+          <Brand />
 
           {/* Description */}
           <p className="mt-4 text-sm text-slate-500">

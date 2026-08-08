@@ -1,10 +1,10 @@
-import Footer from "./components/footer";
-import Header from "./components/Header";
-import About from "./sections/About";
-import Contact from "./sections/Contact";
-import Features from "./sections/Features";
-import Hero from "./sections/Hero";
-import Insights from "./sections/Insights";
+import Footer from "./components/layout/Footer";
+import Header from "./components/layout/Header";
+import About from "./components/sections/About";
+import Contact from "./components/sections/Contact";
+import Features from "./components/sections/Features";
+import Hero from "./components/sections/Hero";
+import Insights from "./components/sections/Insights";
 
 function App() {
   return (

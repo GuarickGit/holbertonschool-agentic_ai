@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import { getInsights } from "../services/insightsService";
-import InsightCard from "../components/InsightCard";
+import { getInsights } from "../../services/insightsService";
+import InsightCard from "../cards/InsightCard";
 
 function Insights() {
   const [insights, setInsights] = useState([]);
