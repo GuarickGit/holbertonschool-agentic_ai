@@ -1,4 +1,5 @@
 import Brand from "../ui/Brand";
+import SocialLink from "../ui/SocialLink";
 import { Instagram, Tiktok, TwitterX, Youtube } from "react-bootstrap-icons";
 
 function Footer() {
@@ -18,53 +19,21 @@ function Footer() {
           <ul className="mt-4 flex gap-3">
             {/* Instagram */}
             <li>
-              <a
-                href="#"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Instagram"
-                className="inline-flex items-center justify-center rounded-lg border border-slate-800 bg-slate-950 p-2 text-slate-50"
-              >
-                <Instagram />
-              </a>
+              <SocialLink icon={<Instagram />} label="Instagram" href="#" />
             </li>
 
             {/* Tiktok */}
             <li>
-              <a
-                href="#"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Tiktok"
-                className="inline-flex items-center justify-center rounded-lg border border-slate-800 bg-slate-950 p-2 text-slate-50"
-              >
-                <Tiktok />
-              </a>
+              <SocialLink icon={<Tiktok />} label="Tiktok" href="#" />
             </li>
 
             {/* Twitter / X */}
             <li>
-              <a
-                href="#"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="X"
-                className="inline-flex items-center justify-center rounded-lg border border-slate-800 bg-slate-950 p-2 text-slate-50"
-              >
-                <TwitterX />
-              </a>
+              <SocialLink icon={<TwitterX />} label="X" href="#" />
             </li>
             {/* Youtube */}
             <li>
-              <a
-                href="#"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Youtube"
-                className="inline-flex items-center justify-center rounded-lg border border-slate-800 bg-slate-950 p-2 text-slate-50"
-              >
-                <Youtube />
-              </a>
+              <SocialLink icon={<Youtube />} label="Youtube" href="#" />
             </li>
           </ul>
         </div>

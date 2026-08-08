@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { getInsights } from "../../services/insightsService";
 import InsightCard from "../cards/InsightCard";
+import SectionBadge from "../ui/SectionBadge";
+import SectionTitle from "../ui/SectionTitle";
 
 function Insights() {
   const [insights, setInsights] = useState([]);
@@ -23,16 +25,14 @@ function Insights() {
       <div className="mx-auto flex max-w-6xl flex-col items-center gap-8 px-6">
         <div className="flex flex-col items-center gap-8 text-center">
           {/* Eyebrow*/}
-          <p className="rounded-full border border-violet-500/20 bg-violet-500/10 px-4 py-2 text-xs text-violet-300">
-            ✦ Insights ✦
-          </p>
+          <SectionBadge>✦ Insights ✦</SectionBadge>
 
           {/* Title */}
-          <h2 className="pb-10 text-4xl leading-none font-black tracking-tight md:text-5xl">
-            <span className="text-slate-50">Explore Agentic AI</span>
-            <br />
-            <span className="text-violet-300">Through real-world scenes</span>
-          </h2>
+          <SectionTitle
+            line1="Explore Agentic AI"
+            line2="Through real-world scenes"
+            className="pb-10"
+          />
         </div>
 
         {/* Affiche le message d'erreur seulement si error n'est pas vide */}

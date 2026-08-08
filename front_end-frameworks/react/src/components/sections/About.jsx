@@ -1,4 +1,6 @@
 import steps from "../../data/steps";
+import SectionBadge from "../ui/SectionBadge";
+import SectionTitle from "../ui/SectionTitle";
 
 function About() {
   return (
@@ -6,16 +8,14 @@ function About() {
       <div className="mx-auto max-w-6xl px-6">
         <div className="flex flex-col items-center gap-4">
           {/* Eyebrow */}
-          <p className="rounded-full border border-violet-500/20 bg-violet-500/10 px-4 py-2 text-xs text-violet-300">
-            ✦ What is Agentic AI? ✦
-          </p>
+          <SectionBadge>✦ What is Agentic AI ✦</SectionBadge>
 
           {/* Title */}
-          <h2 className="pt-4 text-center text-4xl leading-none font-black tracking-tight md:text-5xl">
-            <span className="text-slate-50">AI that does more than answer</span>
-            <br />
-            <span className="text-violet-300">It acts with purpose</span>
-          </h2>
+          <SectionTitle
+            line1="AI that does more than answer"
+            line2="It acts with purpose"
+            className="pt-4"
+          />
 
           {/* Introduction */}
           <p className="mt-4 max-w-2xl pb-18 text-sm text-slate-300 md:text-base">

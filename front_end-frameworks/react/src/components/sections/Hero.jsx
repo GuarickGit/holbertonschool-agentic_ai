@@ -1,4 +1,7 @@
 import { ArrowRight } from "lucide-react";
+import SectionBadge from "../ui/SectionBadge";
+import Button from "../ui/Button";
+import StatCard from "../cards/StatCard";
 
 /* Stats table for .map()*/
 const stats = [
@@ -15,9 +18,7 @@ function Hero() {
       className="flex flex-col items-center gap-8 pt-36 pb-24 text-center"
     >
       {/* Eyebrow */}
-      <p className="rounded-full border border-violet-500/20 bg-violet-500/10 px-4 py-2 text-xs text-violet-300">
-        ✦ The future of coding ✦
-      </p>
+      <SectionBadge>✦ The future of coding ✦</SectionBadge>
 
       {/* Title */}
       <h1 className="text-5xl leading-none font-black tracking-tight md:text-7xl">
@@ -33,34 +34,21 @@ function Hero() {
       </p>
 
       {/* CTA */}
-      <div className="flex flex-col gap-4 py-10 md:flex-row">
-        <a
-          className="inline-flex items-center gap-2 rounded-md bg-violet-500 px-4 py-2 font-semibold text-slate-50 shadow-lg shadow-violet-500/40 hover:bg-violet-600"
-          href="#"
-        >
+      <div className="flex flex-col items-center gap-4 py-10 md:flex-row">
+        <Button href="#">
           Start learning with Holberton School <ArrowRight />
-        </a>
-        <a
-          className="rounded-md border border-slate-800 bg-slate-950 px-4 py-2 font-semibold text-slate-50 hover:bg-slate-900"
-          href="#"
-        >
+        </Button>
+
+        <Button variant="secondary" href="#">
           Methodology
-        </a>
+        </Button>
       </div>
 
       {/* Stats */}
       <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
         {stats.map((stat) => {
           return (
-            <div
-              key={stat.label}
-              className="rounded-xl border border-slate-800 bg-slate-950 p-6 shadow-xl shadow-slate-950/40"
-            >
-              <p className="text-4xl font-black text-violet-300">
-                {stat.value}
-              </p>
-              <p className="text-slate-500">{stat.label}</p>
-            </div>
+            <StatCard key={stat.label} value={stat.value} label={stat.label} />
           );
         })}
       </div>

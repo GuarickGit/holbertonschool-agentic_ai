@@ -1,4 +1,5 @@
 import Brand from "../ui/Brand";
+import Button from "../ui/Button";
 
 function Header() {
   return (
@@ -19,12 +20,7 @@ function Header() {
           </nav>
 
           {/* CTA */}
-          <a
-            className="rounded-md bg-violet-500 px-4 py-2 text-sm font-semibold text-slate-50 shadow-lg shadow-violet-500/40 hover:bg-violet-600"
-            href="#"
-          >
-            Enroll now
-          </a>
+          <Button href="#">Enroll now</Button>
         </div>
       </div>
     </header>

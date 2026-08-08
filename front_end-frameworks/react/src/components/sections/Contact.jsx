@@ -8,6 +8,9 @@ import {
   Sparkles,
 } from "lucide-react";
 import { useState } from "react";
+import SectionBadge from "../ui/SectionBadge";
+import SectionTitle from "../ui/SectionTitle";
+import Button from "../ui/Button";
 
 function Contact() {
   // input contrôlé = State contenant les valeurs du form
@@ -101,35 +104,27 @@ function Contact() {
       className="mx-auto flex max-w-6xl flex-col items-center gap-8 px-6 py-24"
     >
       {/* Eyebrow */}
-      <p className="rounded-full border border-violet-500/20 bg-violet-500/10 px-4 py-2 text-xs text-violet-300">
-        ✦ Start your AI journey ✦
-      </p>
+      <SectionBadge>✦ Start your AI journey ✦</SectionBadge>
 
       {/* Title */}
-      <h2 className="text-center text-4xl leading-none font-black tracking-tight md:text-5xl">
-        <span className="text-slate-50">Ready to Explore</span>
-        <br />
-        <span className="text-violet-300">Agentic AI?</span>
-      </h2>
+      <SectionTitle line1="Ready to Explore" line2="Agentic AI?" />
 
       {/* CTA */}
-      <div className="flex flex-col gap-4 py-10 md:flex-row">
-        <a
-          target="_blank" // Ouvre dans un nouvel onglet
-          rel="noopener noreferrer" // sécurité - empêche la nouvelle page d'avoir accès à la page d'origine
-          className="inline-flex items-center gap-2 rounded-md bg-violet-500 px-4 py-2 font-semibold text-slate-50 shadow-lg shadow-violet-500/40 hover:bg-violet-600"
+      <div className="flex flex-col items-center gap-4 py-10 md:flex-row">
+        <Button
           href="https://www.holbertonschool.fr/rejoindre-lhippocamp"
+          external
         >
           Enroll at Holberton School <ArrowRight />
-        </a>
-        <a
-          target="_blank"
-          rel="noopener noreferrer"
-          className="rounded-md border border-slate-800 bg-slate-950 px-4 py-2 font-semibold text-slate-50 hover:bg-slate-900"
+        </Button>
+
+        <Button
+          variant="secondary"
           href="https://www.holbertonschool.fr/admission"
+          external
         >
           Need more information?
-        </a>
+        </Button>
       </div>
 
       {/* Highlights */}
