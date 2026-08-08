@@ -15,8 +15,23 @@ function Hero() {
   return (
     <section
       id="hero-section"
-      className="flex flex-col items-center gap-8 pt-36 pb-24 text-center"
+      className="relative isolate flex flex-col items-center gap-8 overflow-hidden border-b border-slate-800 pt-36 pb-24 text-center"
     >
+      {/* Glow radial violet + bleu, en fond de section */}
+      <div
+        className="pointer-events-none absolute inset-0 -z-10"
+        style={{
+          background:
+            "radial-gradient(ellipse 70% 60% at 15% 10%, rgba(139, 92, 246, 0.35), transparent), radial-gradient(ellipse 70% 60% at 85% 90%, rgba(59, 130, 246, 0.25), transparent)",
+        }}
+      />
+
+      {/* Grid Overlay */}
+      <div className="bg-size[72px_72px] pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(to_right,rgba(148,163,184,0.12)_1px,transparent_1px),linear-gradient(to_bottom,rgba(148,163,184,0.12)_1px,transparent_1px)] opacity-30" />
+
+      {/* Fondu vers le noir en bas de section */}
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 -z-10 h-32 bg-linear-to-b from-transparent to-black" />
+
       {/* Eyebrow */}
       <SectionBadge>✦ The future of coding ✦</SectionBadge>
 
