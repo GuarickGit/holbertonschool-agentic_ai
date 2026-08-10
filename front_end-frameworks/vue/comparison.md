@@ -77,6 +77,10 @@ JSX a l'avantage d'être très flexible, puisqu'il s'agit de JavaScript à part 
 
 Le template Vue a l'avantage d'être plus proche du HTML classique, donc plus lisible et plus accessible pour quelqu'un qui maîtrise le HTML/CSS sans forcément connaître JavaScript en profondeur. Il impose également une structure plus prévisible. L'inconvénient est qu'il faut apprendre un ensemble de directives spécifiques à Vue (`v-if`, `v-for`, `v-bind`, `v-model`) qui n'existent pas en HTML natif.
 
+### Observation personnelle
+
+En travaillant sur les deux versions du projet, il apparaît que dire que Vue est simplement "plus simple" que React est une simplification excessive. Les deux frameworks sont plus accessibles selon un profil de développeur différent. Vue est plus facile à aborder pour quelqu'un qui vient du HTML/CSS et qui n'est pas encore parfaitement à l'aise avec JavaScript, car son template se lit presque comme des phrases (`v-if`, `v-for`, `v-model`) et évite certains pièges, comme celui du `0` qui s'affiche par erreur avec l'opérateur `&&` en React. En revanche, ce confort a un coût : Vue introduit tout un vocabulaire de directives propre au framework (`v-bind`, `v-on`, `computed`, la distinction `.value`) qui doit être appris en plus du HTML/CSS/JS classique. React, à l'inverse, reste entièrement du JavaScript standard : quelqu'un qui maîtrise déjà `.map()`, les opérateurs ternaires ou `&&` n'a aucune nouvelle syntaxe à apprendre, seulement une nouvelle façon de les utiliser à l'intérieur du JSX. Vue est donc plus simple pour découvrir le développement front-end en partant du HTML, tandis que React est plus naturel pour quelqu'un déjà à l'aise en JavaScript.
+
 ## Props
 
 ### React props
@@ -178,6 +182,10 @@ const isNameValid = computed(() => formData.value.fullName.length >= 2);
 
 Cette fonction est nécessaire en Vue car le `<script setup>` ne s'exécute qu'une seule fois, contrairement à un composant React qui se réexécute entièrement à chaque changement de state. Sans `computed`, une valeur dérivée calculée une seule fois ne se mettrait jamais à jour.
 
+### Observation personnelle
+
+Ce concept a été le plus difficile à intégrer de toute la migration. La distinction entre `ref` et `.value` semblait au départ être un simple détail syntaxique, mais elle repose en fait sur une vraie différence de fonctionnement entre les deux frameworks : React rejoue tout le composant à chaque changement, alors que Vue ne l'exécute qu'une fois et doit donc suivre explicitement quelles valeurs sont réactives. Comprendre pourquoi `.value` est nécessaire dans le `<script setup>` mais disparaît dans le `<template>`, et pourquoi `computed` est indispensable pour les valeurs dérivées comme `isFormValid`, a demandé plusieurs explications et plusieurs relectures du composant `ContactSection.vue` avant d'être réellement clair.
+
 ### Similarités et différences
 
 Dans les deux frameworks, l'état local déclenche automatiquement une mise à jour du rendu lorsqu'il change. La différence principale est le mécanisme : React sépare la lecture (la valeur) et l'écriture (la fonction `setX`), tandis que Vue unifie les deux dans un seul objet réactif accessible via `.value`. React recalcule automatiquement toute valeur dérivée à chaque rendu, car le composant entier est une fonction rejouée en boucle, alors que Vue nécessite `computed()` pour obtenir ce même comportement automatique, en raison de son modèle d'exécution unique au montage.
@@ -248,6 +256,10 @@ Vue utilise des directives dédiées au rendu conditionnel : `v-if`, `v-else-if`
 ### Similarités et différences
 
 Dans les deux cas, un élément n'est inséré dans le DOM que si une condition est vraie. La différence est syntaxique : React réutilise les opérateurs natifs de JavaScript, ce qui demande de connaître certains pièges (par exemple, `{count && <p>...}` peut afficher `0` à l'écran si `count` vaut zéro, car `0` est une valeur affichable en JSX). Vue utilise des directives dédiées et explicites, qui éliminent ce genre de piège car `v-if` évalue la condition comme un booléen strict.
+
+### Observation personnelle
+
+Comprendre ce que fait `&&` conceptuellement a été assez rapide, mais apprendre à le lire correctement a demandé plus de temps. La difficulté n'était pas de comprendre "si error est vrai, alors affiche le message", mais de voir que `error` apparaît deux fois dans la même ligne avec deux rôles différents : une première fois comme condition, une seconde fois comme contenu affiché dans le `<p>`. La syntaxe `v-if="error"` de Vue évite cette ambiguïté, puisque la condition et le contenu affiché sont clairement séparés.
 
 ## Dynamic rendering
 
@@ -390,6 +402,10 @@ src/
 
 Les deux projets partagent la même organisation logique par dossiers (`cards`, `layout`, `sections`, `ui`, `data`, `services`), ce qui a facilité la migration composant par composant sans avoir à repenser l'architecture globale. La seule différence structurelle vient de l'extension des fichiers de composants (`.jsx` contre `.vue`) et du point d'entrée (`main.jsx` contre `main.js`), ainsi que du renommage de certains composants pour respecter la convention Vue imposant des noms multi-mots.
 
+### Observation personnelle
+
+Un aspect de l'organisation du projet qui dépasse la seule structure de dossiers concerne le déploiement. Les deux projets, React et Vue, cohabitent dans le même dépôt monorepo, sous `front_end-frameworks/react` et `front_end-frameworks/vue`. Or, GitHub Pages ne permet qu'un seul site actif par dépôt, construit à partir d'une seule branche `gh-pages`. Organiser correctement le déploiement a donc demandé de publier chaque projet dans un sous-dossier distinct de cette branche unique, plutôt qu'à sa racine, afin que les deux applications restent accessibles simultanément sans que l'une n'écrase l'autre.
+
 ## AI-assisted migration
 
 ### Outils IA utilisés
@@ -404,7 +420,11 @@ La conversion des composants simples, sans état ni logique complexe (`SectionBa
 
 Le remplacement des icônes de réseaux sociaux a demandé une recherche complémentaire, car `lucide-vue-next` ne propose pas de logos de marques (Instagram, TikTok, X, YouTube), une politique volontaire de la bibliothèque Lucide. Il a fallu identifier et installer un paquet équivalent à `react-bootstrap-icons` côté Vue (`bootstrap-icons-vue`), et vérifier manuellement, directement dans les fichiers du paquet installé, le nom exact des composants disponibles (`BIconInstagram`, `BIconTiktok`, `BIconTwitterX`, `BIconYoutube`).
 
-Le déploiement sur GitHub Pages a également nécessité une correction manuelle : la configuration initiale du script `deploy` publiait le contenu à la racine de la branche `gh-pages`, ce qui a écrasé le déploiement du projet React déjà en ligne. La correction a consisté à publier chaque projet dans un sous-dossier dédié, grâce aux options `--dest` et `--add` du paquet `gh-pages`, afin que les deux applications coexistent sur la même branche sans se supprimer mutuellement.
+Le déploiement sur GitHub Pages a également nécessité une correction manuelle, découverte en cours de projet plutôt qu'anticipée : la configuration initiale du script `deploy` publiait le contenu à la racine de la branche `gh-pages`, ce qui a écrasé le déploiement du projet React déjà en ligne. L'erreur a été identifiée immédiatement après le premier déploiement du projet Vue, en constatant que le lien du projet React ne fonctionnait plus. La correction, proposée par le SWE encadrant le projet, a consisté à publier chaque projet dans un sous-dossier dédié (`front_end-frameworks/react` et `front_end-frameworks/vue`), grâce aux options `--dest` et `--add` du paquet `gh-pages`, afin que les deux applications coexistent sur la même branche sans se supprimer mutuellement. Le projet React a ensuite dû être redéployé une fois avec la nouvelle configuration pour restaurer son accès public.
+
+Un autre point a demandé une décision manuelle plutôt qu'une simple traduction de code : le choix du paquet d'icônes. L'énoncé demande explicitement `lucide-vue-next`, mais ce paquet est annoncé comme déprécié par npm au profit de `@lucide/vue`. Le projet avait initialement été configuré avec `@lucide/vue`, avant de revenir consciemment sur `lucide-vue-next` pour respecter la consigne du sujet, malgré l'avertissement de dépréciation. Ce choix illustre qu'une migration assistée par IA ne se limite pas à convertir du code : elle implique aussi d'arbitrer entre une recommandation technique actuelle et une contrainte imposée par l'énoncé.
+
+De la même manière, la bibliothèque `lucide-vue-next` ne fournit aucune icône de marque (Instagram, TikTok, X, YouTube), Lucide excluant volontairement les logos de marques de son catalogue. Cette limitation existait déjà côté React, où le projet utilisait `react-bootstrap-icons` en complément pour ces icônes spécifiques. La migration a nécessité de retrouver l'équivalent Vue de cette bibliothèque (`bootstrap-icons-vue`) et de vérifier manuellement, directement dans les fichiers du paquet installé, le nom exact des composants exportés, la documentation en ligne ne les listant pas explicitement.
 
 Enfin, le respect strict de la règle ESLint `vue/multi-word-component-names` a nécessité de renommer plusieurs composants après leur création initiale (`Header` en `AppHeader`, `Button` en `BaseButton`, etc.), ce qui n'avait pas de contrainte équivalente côté React.
 
