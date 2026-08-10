@@ -1,5 +1,5 @@
 <script setup>
-import Brand from "../ui/Brand.vue";
+import Brand from "../ui/AppBrand.vue";
 import SocialLink from "../ui/SocialLink.vue";
 import {
   BIconInstagram,

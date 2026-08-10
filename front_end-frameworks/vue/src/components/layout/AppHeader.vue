@@ -1,6 +1,6 @@
 <script setup>
-import Brand from "../ui/Brand.vue";
-import Button from "../ui/Button.vue";
+import Brand from "../ui/AppBrand.vue";
+import Button from "../ui/BaseButton.vue";
 </script>
 
 <template>

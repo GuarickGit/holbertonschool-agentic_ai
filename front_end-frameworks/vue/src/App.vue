@@ -1,13 +1,23 @@
 <script setup>
-import { Bot } from "lucide-vue-next";
+import Footer from "./components/layout/AppFooter.vue";
+import Header from "./components/layout/AppHeader.vue";
+import About from "./components/sections/AboutSection.vue";
+import Contact from "./components/sections/ContactSection.vue";
+import Features from "./components/sections/FeaturesSection.vue";
+import Hero from "./components/sections/HeroSection.vue";
+import Insights from "./components/sections/InsightsSection.vue";
 </script>
 
 <template>
-  <main
-    class="flex flex-col items-center justify-center min-h-screen gap-4 bg-slate-950 text-white"
-  >
-    <Bot class="w-12 h-12 text-purple-400" />
-    <h1 class="text-4xl font-bold">Agentic AI</h1>
-    <h2 class="text-lg text-slate-400">Vue.js project setup</h2>
-  </main>
+  <div class="min-h-screen bg-slate-950">
+    <Header />
+    <main>
+      <Hero />
+      <About />
+      <Features />
+      <Insights />
+      <Contact />
+    </main>
+    <Footer />
+  </div>
 </template>
