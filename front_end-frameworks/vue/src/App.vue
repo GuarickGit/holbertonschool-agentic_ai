@@ -1,5 +1,5 @@
 <script setup>
-import { Bot } from "@lucide/vue";
+import { Bot } from "lucide-vue-next";
 </script>
 
 <template>
