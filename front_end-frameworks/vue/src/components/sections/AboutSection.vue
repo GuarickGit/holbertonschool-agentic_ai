@@ -55,7 +55,7 @@ import SectionTitle from "../ui/SectionTitle.vue";
             </div>
             <div>
               <p class="font-semibold text-slate-50">{{ step.title }}</p>
-              <p class="text-smm text-slate-300">
+              <p class="text-sm text-slate-300">
                 {{ step.description }}
               </p>
             </div>
