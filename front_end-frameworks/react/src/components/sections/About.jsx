@@ -58,7 +58,7 @@ function About() {
                   </div>
                   <div>
                     <p className="font-semibold text-slate-50">{step.title}</p>
-                    <p className="text-smm text-slate-300">
+                    <p className="text-sm text-slate-300">
                       {step.description}
                     </p>
                   </div>
