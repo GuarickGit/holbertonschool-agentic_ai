@@ -26,6 +26,7 @@
   "dependencies": {
     "@lucide/svelte": "1.31.0",
     "@tailwindcss/vite": "4.3.3",
+    "svelte-bootstrap-icons": "3.3.0",
     "tailwindcss": "4.3.3"
   }
 }
