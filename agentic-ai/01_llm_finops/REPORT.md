@@ -8,9 +8,9 @@ Le même prompt, mot pour mot, a été envoyé aux deux modèles, dans une conve
 
 ## 2. Modèles testés
 
-| Profil | Outil | Modèle | Réglage |
-|---|---|---|---|
-| Généraliste | ChatGPT | GPT-6 | Medium |
+| Profil          | Outil       | Modèle            | Réglage     |
+| --------------- | ----------- | ----------------- | ----------- |
+| Généraliste     | ChatGPT     | GPT-6             | Medium      |
 | Spécialisé code | Claude Code | Claude Sonnet 5.5 | Effort High |
 
 Claude Code est un outil orienté code qui repose sur un modèle généraliste : la différence de profil vient en partie de l'outil, pas seulement du modèle.
@@ -19,13 +19,13 @@ Claude Code est un outil orienté code qui repose sur un modèle généraliste :
 
 Les deux modèles ont produit un script Python avec `requests` et `BeautifulSoup`, avec des tentatives automatiques (retries), un timeout et des journaux. Ils diffèrent surtout sur la façon de combler le flou :
 
-| Point | GPT-6 | Claude Code (Sonnet 5.5) |
-|---|---|---|
-| Cible du scraping | URL écrite en dur (`quotes.toscrape.com`) | URL passée en argument de ligne de commande |
-| Données extraites | Citations et auteurs (sélecteurs liés à ce site) | Liens de la page par défaut, ou sélecteur CSS au choix |
-| Format de sortie | CSV uniquement (`donnees.csv`) | JSON ou CSV selon l'extension, `output.json` par défaut |
-| Écriture du fichier | Directe, en écrasant le fichier existant | Fichier temporaire puis renommage, en écrasant aussi le fichier existant |
-| Structure du code | Script simple en fonctions | Interface en ligne de commande (`argparse`), exception personnalisée, codes de retour |
+| Point               | GPT-6                                            | Claude Code (Sonnet 5.5)                                                              |
+| ------------------- | ------------------------------------------------ | ------------------------------------------------------------------------------------- |
+| Cible du scraping   | URL écrite en dur (`quotes.toscrape.com`)        | URL passée en argument de ligne de commande                                           |
+| Données extraites   | Citations et auteurs (sélecteurs liés à ce site) | Liens de la page par défaut, ou sélecteur CSS au choix                                |
+| Format de sortie    | CSV uniquement (`donnees.csv`)                   | JSON ou CSV selon l'extension, `output.json` par défaut                               |
+| Écriture du fichier | Directe, en écrasant le fichier existant         | Fichier temporaire puis renommage, en écrasant aussi le fichier existant              |
+| Structure du code   | Script simple en fonctions                       | Interface en ligne de commande (`argparse`), exception personnalisée, codes de retour |
 
 GPT-6 a donné un script qui fonctionne immédiatement, mais seulement sur un site d'exemple. Claude Code a donné un outil plus générique, mais avec beaucoup de code non demandé.
 
